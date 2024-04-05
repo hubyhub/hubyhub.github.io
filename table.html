@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <style>
+
+        table {
+            width: 100%;
+            color: #2f2f2f;
+            min-width: 800px;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        thead {
+            background-color: #f2f2f2;
+        }
+
+        tbody {
+            min-height: 200px;
+            overflow-y: auto;
+            background: white;
+        }
+
+        th, td {
+            border-bottom: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            background: inherit;
+        }
+
+        tr {
+            background: inherit;
+        }
+
+        .sticky-left {
+            position: sticky;
+            left: 0;
+            background: inherit;
+            border-right: 1px solid #ccc;
+        }
+
+        .sticky-top > th {
+            background: inherit;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .sticky-top > .sticky-left {
+            z-index: 2;
+        }
+
+        .sticky-table {
+            
+            position: relative;
+            overflow: auto;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        .sticky-table tbody tr:last-child td{
+            border-bottom:none;
+        }
+
+        table:not(.loading) tr.no-results:not(:first-child){
+            display:none;
+        }
+
+        .no-results > td{
+            text-align:center;
+        }
+
+        table.loading tbody {
+            display: none
+        }
+
+        table.loading::before {
+            content: "";
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            z-index: 1;
+            align-items: center;
+            color: white;
+            background: #c5c5c5;
+            inset: 0;
+        }
+
+        table.loading::after {
+            content: "↻";
+            position: absolute;
+            z-index: 1;
+            color: #2f2f2f;
+            inset: 0;
+            top: 50%;
+            left: 50%;
+            font-size: 26px;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<h1>Table Stylings</h1>
+<div class="sticky-table">
+    <table class="">
+        <thead>
+        <tr class="sticky-top">
+            <th class="sticky-left">Usage</th>
+            <th>Exported Character</th>
+            <th>Current</th>
+            <th>Later</th>
+            <th>RB Usage States</th>
+            <th>Exported Character</th>
+            <th>Current</th>
+            <th>Later</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="sticky-left">Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">NOT Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">X</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>X</td>
+            <td>done</td>
+        </tr>
+        <tr>
+            <td class="sticky-left">LOREM</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+            <td>Used</td>
+            <td>yes</td>
+            <td>true</td>
+            <td>done</td>
+        </tr>
+        <tr class="no-results">
+            <td colspan="8">No Results Found</td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
